@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hero - Free Bulma template</title>
+        <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <!-- Bulma Version 0.7.5-->
+        <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="../css/hero.css"> -->
+        <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+
+
+
+
+	<style>
+html,body {
+  background: #EFF3F4;
+  font-family: 'Open Sans', serif;
+}
+.hero-body .container {
+ 4max-width: 700px;
+}
+.hero-body .title {
+  color: hsl(192,17%,99%) !important;
+}
+.hero-body .subtitle {
+  color: hsl(192,17%,99%) !important;
+  padding-top: 2rem;
+  line-height: 1.5;
+}
+.features {
+  padding: 5rem 0;
+}
+.box.cta {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+}
+.card-image > .fa {
+  font-size: 8rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: #209cee;
+}
+.card-content .content {
+  font-size: 14px;
+  margin: 1rem 1rem;
+}
+.card-content .content h4 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  margin-bottom: 2rem;
+}
+.intro {
+  padding: 5rem 0;
+  text-align: center;
+}
+.sandbox {
+  padding: 5rem 0;
+}
+.tile.notification {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.is-shady {
+animation: flyintoright .4s backwards;
+background: #fff;
+box-shadow: rgba(0, 0, 0, .1) 0 1px 0;
+border-radius: 4px;
+display: inline-block;
+margin: 10px;
+position: relative;
+transition: all .2s ease-in-out;
+}
+.is-shady:hover {
+box-shadow: 0 10px 16px rgba(0, 0, 0, .13), 0 6px 6px rgba(0, 0, 0, .19);
+}
+/*adds font awesome stars*/
+footer li:before {
+  content: '\f1b2';
+  font-family: 'FontAwesome';
+  float: left;
+  margin-left: -1.5em;
+  color: #147efb;
+}
+
+	</style>
+
+<script>
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+
+</script>
+
+    </head>
+    <body >
+        <section class="hero is-info is-medium is-bold">
+            <div class="hero-head">
+                <nav class="navbar  has-background-info">
+                    <div class="container">
+                        <div class="navbar-brand">
+				<h1 class="title"> D'CONS </h1>
+                            <span class="navbar-burger burger" data-target="navbarMenu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
+                        <div id="navbarMenu" class="navbar-menu">
+                            <div class="navbar-end">
+                                <div class="tabs is-right">
+                                    <ul>
+                                        <li class="is-active"><a>D'CONS</a></li>
+                                        <li><a href="#ewc">EWC</a></li>
+                                        <li><a href="#product">Product</a></li>
+                                        <li><a href="#faqs">FAQs</a></li>
+                                        <li><a href="#clients">Clients</a></li>
+                                    </ul>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title"> We Help You Solve </h1>
+		    <h2 class="subtitle has-text-white-ter">
+			  <a href="" class="typewrite" data-period="2000" data-type='[ "Scaling Problems", "Limescale Depositions", "Water Spots on Dishes & Fixtures", "Damaging effects of the brine (backwash) from water softeners" ]'>
+			    <span class="wrap"></span>
+			  </a>
+		    </h2>
+                </div>
+            </div>
+        </section>
+        <div class="box cta" id="ewc">
+		<p class="has-text-centered">
+		<span class="tag is-primary has-text-black">D'CONS EWC</span>
+		<span class="tag is-link has-text-white">Ramesh Bhagwat</span>
+		<span class="tag is-info has-text-dark">Info</span>
+		<span class="tag is-success has-text-black">ramesh.bhagwat@dcons-ewc.com</span>
+		<span class="tag is-warning has-text-black">+91 9822 03 8430</span>
+		<span class="tag is-danger has-text-light">Request A Demo</span>
+		</p>
+        </div>
+        <section class="container">
+		<p class="has-text-centered title has-text-grey-dark"> Electronic Water Conditioners</p>
+            <div class="columns features">
+                <div class="column is-4">
+                    <div class="card is-shady">
+                        <div class="card-image has-text-centered">
+                            <i class="fa fa-cog"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <h4>General Benefits </h4>
+				<ul>
+					<li>EWC reduces soap scum and increases soap lather</li>
+					<li>Provides your water with soft water characteristics without the addition of salt or chemicals</li>
+					<li>Water feels silkier and soap rinses easier leaving you feeling squeaky clean</li>
+					<li>Reduces water spots on dishes and fixtures</li>
+					<li>Works hand-in-hand with iron filters, ozone systems, and UV systems helping to keep these systems free of hard scale deposits</li>
+				</ul>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card is-shady">
+                        <div class="card-image has-text-centered">
+                            <i class="fa fa-heartbeat"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <h4>Health Benefits</h4>
+				<ul>
+					<li>Provides your water with soft water characteristics without the addition of salt or chemicals</li>
+					<li>Improves water taste: Minerals in water are removed from solution, which eliminates harsh or bitter taste in water. </li>
+					<li>Reduces harsh affects of hard water on skin and clothing. Itchy skin conditions including Psoriasis and Eczema are greatly improved or eliminated.</li>
+					<li>Prevents fresh deposits of lime scale </li>
+				</ul>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card is-shady">
+                        <div class="card-image has-text-centered">
+                            <i class="fa fa-tree"></i>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <h4>Environmental Benefits </h4>
+				<ul>
+					<li>Unlike salt based water softeners, EWC is eco-friendly, and have no negative effects on the environment.</li>
+					<li>The decreased surface tension of the treated water makes it easier to absorb by plants making them healthier while saving water.</li>
+					<li>EWC uses no salt or harmful chemicals. Treated water is beneficial to vegetation and has been proven to increase plant growth.</li>
+					<li>Extends useful life of your water heater saving money on energy costs.</li>
+				</ul>	
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section has-text-centered column is-8 is-offset-2" id="product">
+                <h2 class="title">Our Solution</h2><br>
+		<p class="has-text-justified">D'CONS Electronic Water Conditioner (EWC) uses a series of controlled complex modulating high frequency waveform that neutralizes the bonding ability of minerals that are contained in our water. </p><br><p class="has-text-justified">This field effectively agitates different size molecules likely to form scale & to break the bonds between molecules and the water.</p><br><p class="has-text-justified"> This results the breaking down of large mineral crystals into tiny mineral particles & then prevent them from reacting with other minerals or bonding to any surface to from scales.</p><br><p class="has-text-justified"> The process is so effective that existing scales are progressively broken down & flushed away in due course of time.</p><br><p class="has-text-justified"> The conditioned gaseous ions results in noncorrosive & better tasting water. It also helps the plants to grow well & healthy.</p><br><p class="has-text-justified">The EWC provides a simple and economical solution to the limescale problem. It has been successfully installed for customers from all sections of domestic, commerce, industry and government.</p><br>
+	    <div class="column is-8 is-offset-5"><figure class="image is-128x128 "><img class="is-rounded" src="dcons_product.jpeg"></figure></div>
+            </div>
+            
+	    <div class="sandbox section" id="faqs">
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">Hello World</p>
+                            <p class="subtitle">What is up?</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">No tricky installation, easy to attach</p>
+                            <p class="subtitle">Plug into standard power outlet</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">Third column</p>
+                            <p class="subtitle">With some content</p>
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile is-ancestor">
+                    <div class="tile is-vertical is-8">
+                        <div class="tile">
+                            <div class="tile is-parent is-vertical">
+                                <article class="tile is-child notification is-white">
+                                    <p class="title">Vertical tiles</p>
+                                    <p class="subtitle">Top box</p>
+                                </article>
+                                <article class="tile is-child notification is-white">
+                                    <p class="title">Vertical tiles</p>
+                                    <p class="subtitle">Bottom box</p>
+                                </article>
+                            </div>
+                            <div class="tile is-parent">
+                                <article class="tile is-child notification is-white">
+                                    <p class="title">Middle box</p>
+                                    <p class="subtitle">With an image</p>
+                                    <figure class="image is-4by3">
+                                        <img src="https://picsum.photos/640/480/?random" alt="Description">
+                                    </figure>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="tile is-parent is-shady">
+                            <article class="tile is-child notification is-white">
+                                <p class="title">Wide column</p>
+                                <p class="subtitle">Aligned with the right column</p>
+                                <div class="content">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <div class="content">
+                                <p class="title">Why</p>
+                                <p class="subtitle">use an EWC</p>
+                                <div class="content">
+					<ul>
+						<li>Substantially reduce “scum” marks on sinks, baths and kettles</li>
+						<li>Chemical free solution to water descaling and softening</li>
+						<li>No moving parts, fit and forget</li>
+						<li>No need for regular refilling or maintenance</li>
+						<li>Self-monitoring, will indicate any system fault, internally or externally</li>
+						<li>Relatively low cost solution</li>
+						<li>Does not effect the chemical composition of the water, is healthy to drink</li>
+						<li>Reduce Heating Costs. </li>
+						<li>Less Detergent Required</li>
+
+					</ul>	
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">Side column</p>
+                            <p class="subtitle">With some content</p>
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-8 is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">Main column</p>
+                            <p class="subtitle">With some content</p>
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-8 is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">Murphy's law</p>
+                            <p class="subtitle">Anything that can go wrong will go wrong</p>
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="tile is-parent is-shady">
+                        <article class="tile is-child notification is-white">
+                            <p class="title">Main column</p>
+                            <p class="subtitle">With some content</p>
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+	<section>
+		<div class="container"  id="clients">
+			<h1 class="title has-text-centered">Our Clients</h1><br>
+			<div class=" columns">
+<div class="column">		
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="bharat_forge_certificate.jpg" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="bharat_forge_logo.jpeg" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Bharat Forge</p>
+        <p class="subtitle is-6">@ S.Rangan, AVP</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end of column -->
+<div class="column">		
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="bosch_certificate.jpg" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="bosch_logo.jpeg" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">BOSCH</p>
+        <p class="subtitle is-6">@ PM Patole , Manager </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end of column -->
+<div class="column">		
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="thyssenkrupp_certificate.jpg" alt="Thyssenkrupp Certificate">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="thyssenkrupp_logo.jpg" alt="Thyssenkrupp">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Thyssenkrupp</p>
+        <p class="subtitle is-6">@ AS Shah , Maintenance</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end of column -->
+<div class="column">		
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="bajaj_certificate.jpg" alt="Bajaj Certficate">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="bajaj_logo.jpg" alt="Bajaj Auto Ltd">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">Bajaj Auto Ltd</p>
+        <p class="subtitle is-6">@ VL Rajandekar , Manager</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- end of column -->
+</div>
+</div>
+	</section>	
+
+        <footer class="footer">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-3 is-offset-2">
+                        <ul>
+                            <li><a href="#">Talwalkars Gym, Pune Baner</a></li>
+                            <li><a href="#">Nira-Bhima Sahakari Sakhar Karkhana Ltd., Indapur</a></li>
+                            <li><a href="#">Indreshwar Sugar Mill Ltd., Barshi</a></li>
+                            <li><a href="#">Deendayal Magasvargiy Soot-Girni Ltd., Islampur</a></li>
+                            <li><a href="#">Akshay Electicals, Pune</a></li>
+                            <li><a href="#">PVG’S College of Engineering & Technology – Parvati, Pune</a></li>
+                        </ul>
+                    </div>
+                    <div class="column is-3">
+                        <ul>
+                            <li><a href="#">JW Marriot, Mumbai Airport</a></li>
+                            <li><a href="#">Karmyogi Shankarfaoji Patil Sahakari Sakhar Karkhana Ltd., Indapur</a></li>
+                            <li><a href="#">Panchvati Sinnar Motels, Sinnar</a></li>
+                            <li><a href="#">Unicon Industries, Sinnar</a></li>
+                            <li><a href="#">Deosthale-Kelkar Associates, Pune</a></li>
+                            <li><a href="#">Maharashtra Cultural Center, Pune</a></li>
+                            <li><a href="#">Akshay DryCleaners, Nanded</a></li>
+                        </ul>
+                    </div>
+                    <div class="column is-4">
+                        <ul>
+                            <li><a href="#">Holiday Inn – Hinjewadi, Pune</a></li>
+                            <li><a href="#">Taurus Auto Dealers P. Ltd. – Sangali & Pune</a></li>
+                            <li><a href="#">Dr. D.Y.Patil Medical College, Hopital & Research Center, Pimpri – Pune</a></li>
+                            <li><a href="#">Nira-Bhima Distillery Ltd., Baramati</a></li>
+                            <li><a href="#">Sable-Waghire & Co. P. LTD., Pune</a></li>
+                            <li><a href="#">D.Y. Patil Knowledge City – Lohgaon, Pune</a></li>
+                            <li><a href="#">Shri Mahalaxmi Agencies – Akluj, Solapur</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script src="../js/bulma.js"></script>
+        </footer>
+    </body>
+</html>
+
